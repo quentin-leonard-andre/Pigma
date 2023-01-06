@@ -27,6 +27,34 @@
                             hover:bg-success-500
                         `;
                     break;
+
+                    case 'secondary':
+                        classes = `
+                            bg-secondary-600
+                            hover:bg-secondary-500
+                        `;
+                    break;
+
+                    case 'info':
+                        classes = `
+                            bg-info-600
+                            hover:bg-info-500
+                        `;
+                    break;
+
+                    case 'warning':
+                        classes = `
+                            bg-warning-600
+                            hover:bg-warning-500
+                        `;
+                    break;
+
+                    case 'danger':
+                        classes = `
+                            bg-danger-600
+                            hover:bg-danger-500
+                        `;
+                    break;
                 }
 
                 return classes;

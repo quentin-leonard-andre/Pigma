@@ -1,5 +1,5 @@
 <script>
-    import Button from "../components/Button.vue";
+    import Button from "../components/Basics/Button.vue";
 
     export default{
         components: {
@@ -14,8 +14,24 @@
             Primaire
         </Button>
 
+        <Button color="secondary">
+            Secondaire
+        </Button>
+
+        <Button color="info">
+            Information
+        </Button>
+
         <Button color="success">
             Succès
+        </Button>
+
+        <Button color="warning">
+            Attention
+        </Button>
+
+        <Button color="danger">
+            Danger
         </Button>
     </div>
 </template>

@@ -1,32 +1,14 @@
 import { describe, test, expect } from 'vitest';
 import { mount } from '@vue/test-utils';
-import Button from '../src/components/Button.vue';
+import Button from '../src/components/Basics/Button.vue';
 
-describe('buttons', () => {
-  test('afficher les styles corrects pour un bouton avec une couleur primaire', () => {
-    const wrapper = mount(Button, {
-      props: {
-        color: 'primary'
-      },
-    });
+describe('fonctionnement général des boutons', () => {
+  test('initialisation du composant', () => {
 
-    expect(wrapper.classes()).toEqual(
-      expect.arrayContaining(["bg-primary-600", "hover:bg-primary-500"])
-    );
   });
+});
 
-  test('afficher les styles corrects pour un bouton avec une couleur succès', () => {
-    const wrapper = mount(Button, {
-      props: {
-        color: 'success'
-      },
-    });
-
-    expect(wrapper.classes()).toEqual(
-      expect.arrayContaining(["bg-success-600", "hover:bg-success-500"])
-    );
-  });
-  
+describe('styles des boutons', () => {
   test('afficher les styles corrects pour un bouton sans couleur déclarée', () => {
     const wrapper = mount(Button, {
       props: {
@@ -37,4 +19,24 @@ describe('buttons', () => {
       expect.arrayContaining(["bg-primary-600", "hover:bg-primary-500"])
     );
   });
+
+  //Test sur les couleurs
+  test.each([
+    "primary",
+    "secondary",
+    "info",
+    "success",
+    "warning",
+    "danger",
+  ])('afficher les styles corrects pour un bouton avec la couleur "%s"', (color) => {
+    const wrapper = mount(Button, {
+      props: {
+        color: color
+      },
+    });
+
+    expect(wrapper.classes()).toEqual(
+      expect.arrayContaining(["bg-" + color + "-600", "hover:bg-" + color + "-500"])
+    );
+  })
 });
