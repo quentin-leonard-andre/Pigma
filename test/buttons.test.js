@@ -32,7 +32,11 @@ describe('styles des boutons', () => {
     });
 
     expect(wrapper.classes()).toEqual(
-      expect.arrayContaining(["bg-" + color + "-600", "hover:bg-" + color + "-500", "text-white"])
+      expect.arrayContaining([
+        "bg-" + color + "-600", 
+        "hover:bg-" + color + "-500", 
+        "text-white"
+      ])
     );
   });
 
@@ -58,7 +62,7 @@ describe('styles des boutons', () => {
   });
 
   //Test sur la propriété disabled sur les boutons standards
-  test.each(colors)('afficher les styles corrects pour un bouton avec la couleur "%s"', (color) => {
+  test.each(colors)('attribuer l\'attribut "disabled" à un bouton avec la couleur "%s"', (color) => {
     const wrapper = mount(Button, {
       props: {
         color: color,
@@ -72,8 +76,30 @@ describe('styles des boutons', () => {
     ).toBeDefined();
   });
 
+  //Test des styles sur les boutons standards disabled
+  test.each(colors)('afficher les styles corrects pour un bouton disabled avec la couleur "%s"', (color) => {
+    const wrapper = mount(Button, {
+      props: {
+        color: color,
+        disabled: true
+      },
+    });
+
+    expect(wrapper.classes()).toEqual(
+      expect.arrayContaining([
+        "opacity-50"
+      ])
+    );
+
+    expect(wrapper.classes()).not.toEqual(
+      expect.arrayContaining([
+        "hover:bg-" + color + "-500", 
+      ])
+    );
+  });
+
   //Test sur la propriété disabled sur les boutons contours
-  test.each(colors)('afficher les styles corrects pour un bouton outline avec la couleur "%s"', (color) => {
+  test.each(colors)('attribuer l\'attribut "disabled" à un bouton outline avec la couleur "%s"', (color) => {
     const wrapper = mount(Button, {
       props: {
         color: color,
@@ -85,5 +111,28 @@ describe('styles des boutons', () => {
     expect(
       wrapper.attributes().disabled
     ).toBeDefined();
+  });
+
+  //Test des styles sur les boutons contours disabled
+  test.each(colors)('afficher les styles corrects pour un bouton outline disabled avec la couleur "%s"', (color) => {
+    const wrapper = mount(Button, {
+      props: {
+        color: color,
+        disabled: true
+      },
+    });
+
+    expect(wrapper.classes()).toEqual(
+      expect.arrayContaining([
+        "opacity-50"
+      ])
+    );
+
+    expect(wrapper.classes()).not.toEqual(
+      expect.arrayContaining([
+        "hover:bg-" + color + "-600",
+        "hover:text-white"
+      ])
+    );
   });
 });

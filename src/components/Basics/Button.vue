@@ -200,9 +200,11 @@ import { UNREF } from '@vue/compiler-core';
                                 text-white
                             `;
 
-                            classes+=`
-                                hover:bg-danger-500
-                            `;
+                            if(!this.disabled){
+                                classes+=`
+                                    hover:bg-danger-500
+                                `;
+                            }
                         }
                     break;
                 }
