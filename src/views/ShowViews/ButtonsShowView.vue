@@ -28,6 +28,7 @@
 
         <div class="flex gap-4">
             <Button
+                show-button
                 v-for="button in buttons"
                 :color="(button.color) ? button.color:''"
                 :disabled="button.disabled"
