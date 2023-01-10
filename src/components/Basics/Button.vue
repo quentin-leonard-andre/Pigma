@@ -237,6 +237,12 @@ import { UNREF } from '@vue/compiler-core';
 
         :disabled="disabled"
     >
-        <slot/>
+        
+
+        <div class="flex items-center gap-2">
+            <!-- Contenu -->
+            <slot />
+        </div>
+        
     </button>
 </template>

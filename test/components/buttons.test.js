@@ -1,6 +1,6 @@
 import { describe, test, expect } from 'vitest';
 import { mount } from '@vue/test-utils';
-import Button from '../src/components/Basics/Button.vue';
+import Button from '../../src/components/Basics/Button.vue';
 
 var colors = [
   "primary",
@@ -10,6 +10,38 @@ var colors = [
   "warning",
   "danger",
 ];
+
+describe('état des boutons', () => {
+  //Test sur la propriété disabled sur les boutons standards
+  test.each(colors)('attribuer l\'attribut "disabled" à un bouton avec la couleur "%s"', (color) => {
+    const wrapper = mount(Button, {
+      props: {
+        color: color,
+        outline: false,
+        disabled: true
+      },
+    });
+
+    expect(
+      wrapper.attributes().disabled
+    ).toBeDefined();
+  });
+
+  //Test sur la propriété disabled sur les boutons contours
+  test.each(colors)('attribuer l\'attribut "disabled" à un bouton outline avec la couleur "%s"', (color) => {
+    const wrapper = mount(Button, {
+      props: {
+        color: color,
+        outline: false,
+        disabled: true
+      },
+    });
+
+    expect(
+      wrapper.attributes().disabled
+    ).toBeDefined();
+  });
+});
 
 describe('styles des boutons', () => {
   test('afficher les styles corrects pour un bouton sans couleur déclarée', () => {
@@ -61,21 +93,6 @@ describe('styles des boutons', () => {
     );
   });
 
-  //Test sur la propriété disabled sur les boutons standards
-  test.each(colors)('attribuer l\'attribut "disabled" à un bouton avec la couleur "%s"', (color) => {
-    const wrapper = mount(Button, {
-      props: {
-        color: color,
-        outline: false,
-        disabled: true
-      },
-    });
-
-    expect(
-      wrapper.attributes().disabled
-    ).toBeDefined();
-  });
-
   //Test des styles sur les boutons standards disabled
   test.each(colors)('afficher les styles corrects pour un bouton disabled avec la couleur "%s"', (color) => {
     const wrapper = mount(Button, {
@@ -96,21 +113,6 @@ describe('styles des boutons', () => {
         "hover:bg-" + color + "-500", 
       ])
     );
-  });
-
-  //Test sur la propriété disabled sur les boutons contours
-  test.each(colors)('attribuer l\'attribut "disabled" à un bouton outline avec la couleur "%s"', (color) => {
-    const wrapper = mount(Button, {
-      props: {
-        color: color,
-        outline: false,
-        disabled: true
-      },
-    });
-
-    expect(
-      wrapper.attributes().disabled
-    ).toBeDefined();
   });
 
   //Test des styles sur les boutons contours disabled
