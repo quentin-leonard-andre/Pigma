@@ -11,82 +11,75 @@
 </script>
 
 <template>
+    <!-- Boutons standards -->
     <ButtonsShowView
         label="Boutons standards"
+        :buttons="[
+            {
+                color: 'primary',
+                label: 'Primaire'
+            },
+            {
+                color: 'secondary',
+                label: 'Secondaire'
+            },
+            {
+                color: 'info',
+                label: 'Information'
+            },
+            {
+                color: 'success',
+                label: 'Succès'
+            },
+            {
+                color: 'warning',
+                label: 'Attention'
+            },
+            {
+                color: 'danger',
+                label: 'Danger'
+            },
+        ]"
     >
     </ButtonsShowView>
 
-    <!-- Boutons -->
-    <div class="flex p-4 gap-4">
-        <Button color="primary">
-            Primaire
-        </Button>
-
-        <Button color="secondary">
-            Secondaire
-        </Button>
-
-        <Button color="info">
-            Information
-        </Button>
-
-        <Button color="success">
-            Succès
-        </Button>
-
-        <Button color="warning">
-            Attention
-        </Button>
-
-        <Button color="danger">
-            Danger
-        </Button>
-    </div>
-
     <!-- Boutons Contours -->
-    <div class="flex p-4 gap-4">
-        <Button 
-            color="primary"
-            :outline="true"
-        >
-            Primaire
-        </Button>
-
-        <Button 
-            color="secondary"
-            :outline="true"
-        >
-            Secondaire
-        </Button>
-
-        <Button 
-            color="info"
-            :outline="true"
-        >
-            Information
-        </Button>
-
-        <Button 
-            color="success"
-            :outline="true"
-        >
-            Succès
-        </Button>
-
-        <Button 
-            color="warning"
-            :outline="true"
-        >
-            Attention
-        </Button>
-
-        <Button 
-            color="danger"
-            :outline="true"
-        >
-            Danger
-        </Button>
-    </div>
+    <ButtonsShowView
+        label="Boutons contours"
+        :buttons="[
+            {
+                color: 'primary',
+                label: 'Primaire',
+                outline: true
+            },
+            {
+                color: 'secondary',
+                label: 'Secondaire',
+                outline: true
+            },
+            {
+                color: 'info',
+                label: 'Information',
+                outline: true
+            },
+            {
+                color: 'success',
+                label: 'Succès',
+                outline: true
+            },
+            {
+                color: 'warning',
+                label: 'Attention',
+                outline: true
+            },
+            {
+                color: 'danger',
+                label: 'Danger',
+                outline: true
+            },
+        ]"
+    >
+    </ButtonsShowView>
 
     <!-- Boutons désactivés -->
     <div class="flex p-4 gap-4">
