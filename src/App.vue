@@ -20,13 +20,30 @@
 
     <!-- Barre de liens -->
     <nav 
-      class="p-3 w-full"
+      class="p-3 w-full flex flex-wrap gap-4"
     >
       <RouterLink 
         to="/"
-        class="hover:text-primary-900"
+        class="hover:text-primary-500"
+        :class="{'text-primary-500': $route.name == 'home'}"
       >
         Accueil
+      </RouterLink>
+
+      <RouterLink 
+        to="/buttons"
+        class="hover:text-primary-500"
+        :class="{'text-primary-500': $route.name == 'buttons'}"
+      >
+        Boutons
+      </RouterLink>
+
+      <RouterLink 
+        to="/cards"
+        class="hover:text-primary-500"
+        :class="{'text-primary-500': $route.name == 'cards'}"
+      >
+        Cartes
       </RouterLink>
     </nav>
   </header>

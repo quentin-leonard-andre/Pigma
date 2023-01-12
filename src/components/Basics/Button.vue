@@ -18,11 +18,15 @@ import { UNREF } from '@vue/compiler-core';
             toggable: {
                 type: Boolean,
                 default: false
+            },
+            init_toggled: {
+                type: Boolean,
+                default: false
             }
         },
-        data(){
+        data(props){
             return {
-                toggled: false
+                toggled: props.init_toggled
             };
         },
         methods: {
@@ -40,7 +44,6 @@ import { UNREF } from '@vue/compiler-core';
                                 outline-primary-600
                                 outline-2
                                 text-primary-600
-                                
                             `;
                             
                             if(!this.disabled){
@@ -61,6 +64,10 @@ import { UNREF } from '@vue/compiler-core';
                                 classes+=`
                                     hover:bg-primary-500
                                 `;
+                            }
+
+                            if(this.toggled){
+                                classes+=" ring-offset-0 ring-4 ring-primary-100"
                             }
                         }
                     break;
@@ -91,6 +98,10 @@ import { UNREF } from '@vue/compiler-core';
                                 classes+=`
                                     hover:bg-success-500
                                 `;
+                            }
+
+                            if(this.toggled){
+                                classes+=" ring-offset-0 ring-4 ring-success-100"
                             }
                         }
                     break;
@@ -123,6 +134,10 @@ import { UNREF } from '@vue/compiler-core';
                                     hover:bg-secondary-500
                                 `;
                             }
+
+                            if(this.toggled){
+                                classes+=" ring-offset-0 ring-4 ring-secondary-100"
+                            }
                         }
                     break;
 
@@ -154,6 +169,10 @@ import { UNREF } from '@vue/compiler-core';
                                     hover:bg-info-500
                                 `;
                             }
+
+                            if(this.toggled){
+                                classes+=" ring-offset-0 ring-4 ring-info-100"
+                            }
                         }
                     break;
 
@@ -184,6 +203,10 @@ import { UNREF } from '@vue/compiler-core';
                                     hover:bg-warning-500
                                 `;
                             }
+
+                            if(this.toggled){
+                                classes+=" ring-offset-0 ring-4 ring-warning-100"
+                            }
                         }
                     break;
 
@@ -213,6 +236,10 @@ import { UNREF } from '@vue/compiler-core';
                                 classes+=`
                                     hover:bg-danger-500
                                 `;
+                            }
+
+                            if(this.toggled){
+                                classes+=" ring-offset-0 ring-4 ring-danger-100"
                             }
                         }
                     break;
@@ -253,7 +280,6 @@ import { UNREF } from '@vue/compiler-core';
         :disabled="disabled"
     >
         <div class="flex items-center gap-2">
-            {{ toggled }}
             <!-- Contenu -->
             <slot />
         </div>

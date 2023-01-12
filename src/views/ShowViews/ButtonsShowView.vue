@@ -34,6 +34,7 @@
                 :disabled="button.disabled"
                 :outline="button.outline"
                 :toggable="button.toggable"
+                :init_toggled="button.init_toggled"
             >
                 {{ (button.label) ? button.label : "" }}
             </Button>

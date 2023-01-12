@@ -155,11 +155,47 @@ describe('styles des boutons', () => {
       ])
     );
   });
+
+  //Test des styles sur les boutons toggled
+  test.each(colors)('afficher les styles corrects pour un bouton toggled avec la couleur "%s"', (color) => {
+    const wrapper = mount(Button, {
+      props: {
+        color: color,
+        init_toggled: true
+      },
+    });
+
+    expect(wrapper.classes()).toEqual(
+      expect.arrayContaining([
+        "ring-offset-0", 
+        "ring-4", 
+        "ring-" + color + "-100"
+      ])
+    );
+  });
+
+  //Test des styles sur les boutons toggled
+  test.each(colors)('afficher les styles corrects pour un bouton non toggled avec la couleur "%s"', (color) => {
+    const wrapper = mount(Button, {
+      props: {
+        color: color,
+        init_toggled: false
+      },
+    });
+
+    expect(wrapper.classes()).toEqual(
+      expect.not.arrayContaining([
+        "ring-offset-0", 
+        "ring-4",
+        "ring-" + color + "-100"
+      ])
+    );
+  });
 });
 
 describe('actions des boutons', () => {
-  //Clic sur un bouton toggable
-  test('cliquer sur un bouton "toggable"', () => {
+  //Clic sur un bouton toggable non toggled
+  test('cliquer sur un bouton "toggable" non toggled', async () => {
     const wrapper = mount(Button, {
       props: {
         toggable: true
@@ -169,6 +205,40 @@ describe('actions des boutons', () => {
     expect(
       wrapper.props().toggable
     ).toEqual(true);
+
+    expect(
+      wrapper.vm.toggled
+    ).toEqual(false);
+
+    await wrapper.find('button').trigger('click');
+
+    expect(
+      wrapper.vm.toggled
+    ).toEqual(true);
+  });
+
+  //Clic sur un bouton toggable toggled
+  test('cliquer sur un bouton "toggable" toggled', async () => {
+    const wrapper = mount(Button, {
+      props: {
+        init_toggled: true,
+        toggable: true
+      },
+    });
+
+    expect(
+      wrapper.props().toggable
+    ).toEqual(true);
+
+    expect(
+      wrapper.props().init_toggled
+    ).toEqual(true);
+
+    expect(
+      wrapper.vm.toggled
+    ).toEqual(true);
+
+    await wrapper.find('button').trigger('click');
 
     expect(
       wrapper.vm.toggled
