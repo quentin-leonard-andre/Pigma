@@ -9,7 +9,7 @@
 </script>
 
 <template>
-  <header class="flex flex-col items-center bg-secondary-100 p-1">
+  <header class="flex flex-col items-center bg-light-600 p-1">
     <!-- Logo -->
     <a href="/">
       <img 

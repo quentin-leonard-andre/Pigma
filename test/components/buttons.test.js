@@ -32,7 +32,7 @@ describe('état des boutons', () => {
     const wrapper = mount(Button, {
       props: {
         color: color,
-        outline: false,
+        outline: true,
         disabled: true
       },
     });
@@ -40,6 +40,24 @@ describe('état des boutons', () => {
     expect(
       wrapper.attributes().disabled
     ).toBeDefined();
+  });
+
+  //Test sur la propriété toggable sur les boutons
+  test.each(colors)('attribuer l\'attribut "toggable" à un bouton avec la couleur "%s"', (color) => {
+    const wrapper = mount(Button, {
+      props: {
+        color: color,
+        toggable: true
+      },
+    });
+
+    expect(
+      wrapper.props().toggable
+    ).toEqual(true);
+
+    expect(
+      wrapper.vm.toggled
+    ).toEqual(false);
   });
 });
 
@@ -136,5 +154,24 @@ describe('styles des boutons', () => {
         "hover:text-white"
       ])
     );
+  });
+});
+
+describe('actions des boutons', () => {
+  //Clic sur un bouton toggable
+  test('cliquer sur un bouton "toggable"', () => {
+    const wrapper = mount(Button, {
+      props: {
+        toggable: true
+      },
+    });
+
+    expect(
+      wrapper.props().toggable
+    ).toEqual(true);
+
+    expect(
+      wrapper.vm.toggled
+    ).toEqual(false);
   });
 });

@@ -1,5 +1,7 @@
 import { describe, test, expect } from 'vitest';
 import { mount } from '@vue/test-utils';
+
+import Button from '../../src/components/Basics/Button.vue';
 import ButtonsShowView from '../../src/views/ShowViews/ButtonsShowView.vue';
 
 describe('création du composant', () => {

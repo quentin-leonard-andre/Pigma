@@ -33,6 +33,7 @@
                 :color="(button.color) ? button.color:''"
                 :disabled="button.disabled"
                 :outline="button.outline"
+                :toggable="button.toggable"
             >
                 {{ (button.label) ? button.label : "" }}
             </Button>

@@ -14,7 +14,16 @@ import { UNREF } from '@vue/compiler-core';
             disabled: {
                 type: Boolean,
                 default: false
+            },
+            toggable: {
+                type: Boolean,
+                default: false
             }
+        },
+        data(){
+            return {
+                toggled: false
+            };
         },
         methods: {
             getButtonClassesByColor(color){
@@ -214,6 +223,11 @@ import { UNREF } from '@vue/compiler-core';
                 }
 
                 return classes;
+            },
+            onClick(event){
+                if(this.toggable){
+                    this.toggled = !this.toggled;
+                }
             }
         }
     }
@@ -221,6 +235,7 @@ import { UNREF } from '@vue/compiler-core';
 
 <template>
     <button
+        @click="onClick"
         class="
             px-2
             py-1
@@ -237,9 +252,8 @@ import { UNREF } from '@vue/compiler-core';
 
         :disabled="disabled"
     >
-        
-
         <div class="flex items-center gap-2">
+            {{ toggled }}
             <!-- Contenu -->
             <slot />
         </div>

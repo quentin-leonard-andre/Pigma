@@ -7,7 +7,33 @@
             Button,
             ButtonsShowView
         },
+        data(){
+            return {
+                colors: [
+                    'primary',
+                    'secondary',
+                    'info',
+                    'success',
+                    'warning',
+                    'danger'
+                ]
+            }
+        },  
         methods: {
+            buttons_content(extra_attributes={}){
+                var res = [];
+                this.colors.forEach(color => {
+                    var new_object = {
+                        color: color,
+                        label: color
+                    };
+
+                    res.push(
+                        {...new_object, ...extra_attributes}
+                    );
+                });
+                return res;
+            }
         }
     }
 </script>
@@ -16,152 +42,44 @@
     <!-- Boutons standards -->
     <ButtonsShowView
         label="Boutons standards"
-        :buttons="[
-            {
-                color: 'primary',
-                label: 'Primaire'
-            },
-            {
-                color: 'secondary',
-                label: 'Secondaire'
-            },
-            {
-                color: 'info',
-                label: 'Information'
-            },
-            {
-                color: 'success',
-                label: 'Succès'
-            },
-            {
-                color: 'warning',
-                label: 'Attention'
-            },
-            {
-                color: 'danger',
-                label: 'Danger'
-            },
-        ]"
+        :buttons="buttons_content()"
     >
     </ButtonsShowView>
 
     <!-- Boutons Contours -->
     <ButtonsShowView
         label="Boutons contours"
-        :buttons="[
-            {
-                color: 'primary',
-                label: 'Primaire',
-                outline: true
-            },
-            {
-                color: 'secondary',
-                label: 'Secondaire',
-                outline: true
-            },
-            {
-                color: 'info',
-                label: 'Information',
-                outline: true
-            },
-            {
-                color: 'success',
-                label: 'Succès',
-                outline: true
-            },
-            {
-                color: 'warning',
-                label: 'Attention',
-                outline: true
-            },
-            {
-                color: 'danger',
-                label: 'Danger',
-                outline: true
-            },
-        ]"
+        :buttons="buttons_content({
+            outline: true
+        })"
     >
     </ButtonsShowView>
 
     <!-- Boutons désactivés -->
     <ButtonsShowView
         label="Boutons désactivés"
-        :buttons="[
-            {
-                color: 'primary',
-                label: 'Primaire',
-                disabled: true
-            },
-            {
-                color: 'secondary',
-                label: 'Secondaire',
-                disabled: true
-            },
-            {
-                color: 'info',
-                label: 'Information',
-                disabled: true
-            },
-            {
-                color: 'success',
-                label: 'Succès',
-                disabled: true
-            },
-            {
-                color: 'warning',
-                label: 'Attention',
-                disabled: true
-            },
-            {
-                color: 'danger',
-                label: 'Danger',
-                disabled: true
-            },
-        ]"
+        :buttons="buttons_content({
+            disabled: true
+        })"
     >
     </ButtonsShowView>
 
     <!-- Boutons contours désactivés -->
     <ButtonsShowView
         label="Boutons contours désactivés"
-        :buttons="[
-            {
-                color: 'primary',
-                label: 'Primaire',
-                outline: true,
-                disabled: true
-            },
-            {
-                color: 'secondary',
-                label: 'Secondaire',
-                outline: true,
-                disabled: true
-            },
-            {
-                color: 'info',
-                label: 'Information',
-                outline: true,
-                disabled: true
-            },
-            {
-                color: 'success',
-                label: 'Succès',
-                outline: true,
-                disabled: true
-            },
-            {
-                color: 'warning',
-                label: 'Attention',
-                outline: true,
-                disabled: true
-            },
-            {
-                color: 'danger',
-                label: 'Danger',
-                outline: true,
-                disabled: true
-            },
-        ]"
+        :buttons="buttons_content({
+            outline: true,
+            disabled: true
+        })"
+    >
+    </ButtonsShowView>
+
+    <!-- Boutons toggables -->
+    <ButtonsShowView
+        label="Boutons d'états"
+        :buttons="buttons_content({
+            toggable: true
+        })"
     >
     </ButtonsShowView>
 </template>
