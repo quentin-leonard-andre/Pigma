@@ -9,14 +9,26 @@
 </script>
 
 <template>
-  <header>
-      <nav>
-        <RouterLink 
-          to="/"
-        >
-          Accueil
-        </RouterLink>
-      </nav>
+  <header class="flex flex-col items-center bg-secondary-100 p-1">
+    <!-- Logo -->
+    <a href="/">
+      <img 
+        src="./assets/images/pigma_logo.png"
+        class="max-w-[80px]"
+      />
+    </a>
+
+    <!-- Barre de liens -->
+    <nav 
+      class="p-3 w-full"
+    >
+      <RouterLink 
+        to="/"
+        class="hover:text-primary-900"
+      >
+        Accueil
+      </RouterLink>
+    </nav>
   </header>
 
   <RouterView/>

@@ -26,7 +26,7 @@
             {{ label }}
         </label>
 
-        <div class="flex gap-4">
+        <div class="flex gap-4 flex-wrap">
             <Button
                 show-button
                 v-for="button in buttons"

@@ -8,9 +8,6 @@
             ButtonsShowView
         },
         methods: {
-            getButtonWithIconLabel(icon, label){
-                return "Quentin";
-            }
         }
     }
 </script>
@@ -21,7 +18,8 @@
         label="Boutons standards"
         :buttons="[
             {
- 
+                color: 'primary',
+                label: 'Primaire'
             },
             {
                 color: 'secondary',
